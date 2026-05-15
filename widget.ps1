@@ -128,8 +128,9 @@ function Get-Timings {
         WindowStyle="None" AllowsTransparency="True" Background="Transparent"
         Topmost="True" ShowInTaskbar="False" SizeToContent="WidthAndHeight"
         ResizeMode="NoResize" WindowStartupLocation="Manual"
+        UseLayoutRounding="True" SnapsToDevicePixels="True"
         FontFamily="file:///C:/Users/abu_y/PrayerWidget/fonts/#Nunito">
-  <Border CornerRadius="22" Background="#FA1C1E22" BorderBrush="#44000000" BorderThickness="1">
+  <Border CornerRadius="22" Background="#FA1C1E22" BorderBrush="#22FFFFFF" BorderThickness="1" Margin="28">
     <Border.Effect>
       <DropShadowEffect Color="Black" BlurRadius="22" ShadowDepth="4" Opacity="0.55"/>
     </Border.Effect>
