@@ -2,6 +2,10 @@
 
 Toza, doim ko'rinib turuvchi (always-on-top) Windows vidjeti — istalgan shahar uchun namoz vaqtlari, jonli countdown va Sajda uslubidagi dizayn bilan. PowerShell + WPF, hech qanday muhit o'rnatish kerak emas.
 
+<p align="center">
+  <img src="screenshot.png" alt="Namoz widget" width="280"/>
+</p>
+
 ## Xususiyatlari
 
 - **Istalgan shahar** — sozlamalar oynasidan shahar va davlatni o'zgartirib turish (Aladhan API, 5 mln+ joy)
