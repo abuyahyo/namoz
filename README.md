@@ -18,32 +18,34 @@ Toza, doim ko'rinib turuvchi (always-on-top) Windows vidjeti — istalgan shahar
 - **Avtomatik ishga tushish** — `shell:startup` shortcut bilan har gal Windows yoqilganda ochiladi
 - **Toza dizayn** — Nunito shrifti, kirillcha o'zbek matn, chuqur yashil pastki bar, yumshoq aylanma burchaklar
 
+## Bir qatorda o'rnatish
+
+PowerShell ochib (Start menyuda **"Terminal"** yoki **"PowerShell"**) quyidagi qatorni yopishtiring va Enter bosing:
+
+```powershell
+irm https://raw.githubusercontent.com/abuyahyo/namoz/main/install.ps1 | iex
+```
+
+Shu zahoti vidjet yuklab olinadi, `%USERPROFILE%\PrayerWidget\` ga o'rnatiladi, Desktop va Startup'ga yorliqlar qo'shiladi va vidjet ishga tushadi. Hech narsa qo'lda qilish kerak emas.
+
+**Olib tashlash:**
+```powershell
+irm https://raw.githubusercontent.com/abuyahyo/namoz/main/uninstall.ps1 | iex
+```
+
 ## Talablar
 
 - Windows 10 / 11
-- PowerShell 5.1+ (Windows bilan kelishi)
-- Internet (boshlang'ich va kunlik yangilanish uchun)
+- PowerShell 5.1+ (Windows bilan birga keladi)
+- Internet (boshlang'ich va kunlik yangilanish uchun; offline rejimda oxirgi kesh ko'rsatiladi)
 
-## O'rnatish
+## Qo'lda o'rnatish
 
-1. Repo'ni `C:\Users\<user>\PrayerWidget\` ga klonlang yoki ZIP'ni shu yo'lga ochib qo'ying:
+Agar avtomatik installer ishlatmoqchi bo'lmasangiz:
 
-   ```powershell
-   git clone https://github.com/abuyahyo/namoz.git $env:USERPROFILE\PrayerWidget
-   ```
-
-2. `start.vbs` ni ikki marta bosing — vidjet ekranning yuqori-o'ng burchagida paydo bo'ladi.
-
-3. (Ixtiyoriy) Avtomatik ishga tushishi uchun `start.vbs` shortcut'ini `shell:startup` papkasiga joylashtiring:
-
-   ```powershell
-   $WshShell = New-Object -ComObject WScript.Shell
-   $sc = $WshShell.CreateShortcut((Join-Path ([Environment]::GetFolderPath('Startup')) 'Namoz.lnk'))
-   $sc.TargetPath = "$env:USERPROFILE\PrayerWidget\start.vbs"
-   $sc.WorkingDirectory = "$env:USERPROFILE\PrayerWidget"
-   $sc.IconLocation = "$env:USERPROFILE\PrayerWidget\namoz.ico,0"
-   $sc.Save()
-   ```
+1. [Release sahifasi](https://github.com/abuyahyo/namoz/releases/latest)dan **Source code (zip)** ni yuklang
+2. ZIP ichidagi papkani `%USERPROFILE%\PrayerWidget\` ga ochib qo'ying
+3. `start.vbs` ni ikki marta bosing
 
 ## Foydalanish
 
