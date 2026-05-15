@@ -1,4 +1,4 @@
-﻿# Namoz prayer widget — one-line installer
+# Namoz prayer widget — one-line installer
 # Usage:
 #   irm https://raw.githubusercontent.com/abuyahyo/namoz/main/install.ps1 | iex
 

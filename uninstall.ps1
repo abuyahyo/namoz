@@ -1,4 +1,4 @@
-﻿# Namoz prayer widget — uninstaller
+# Namoz prayer widget — uninstaller
 # Usage:
 #   irm https://raw.githubusercontent.com/abuyahyo/namoz/main/uninstall.ps1 | iex
 
