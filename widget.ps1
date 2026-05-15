@@ -130,6 +130,30 @@ function Get-Timings {
         ResizeMode="NoResize" WindowStartupLocation="Manual"
         UseLayoutRounding="True" SnapsToDevicePixels="True"
         FontFamily="file:///C:/Users/abu_y/PrayerWidget/fonts/#Nunito">
+  <Window.Resources>
+    <Style x:Key="IconButton" TargetType="Button">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Focusable" Value="False"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="Bg" Background="{TemplateBinding Background}" CornerRadius="5" SnapsToDevicePixels="True">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Bg" Property="Background" Value="#22FFFFFF"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Bg" Property="Background" Value="#33FFFFFF"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
   <Border CornerRadius="22" Background="#FA1C1E22" BorderBrush="#22FFFFFF" BorderThickness="1" Margin="28">
     <Border.Effect>
       <DropShadowEffect Color="Black" BlurRadius="22" ShadowDepth="4" Opacity="0.55"/>
@@ -143,12 +167,14 @@ function Get-Timings {
 
       <DockPanel Grid.Row="0" LastChildFill="False" Margin="14,10,14,2">
         <Button x:Name="BtnSettings" DockPanel.Dock="Left" Content="&#x2699;"
-                Width="22" Height="20" Background="Transparent" Foreground="#B5B7BB"
-                BorderThickness="0" FontSize="13" Cursor="Hand"
+                Style="{StaticResource IconButton}"
+                Width="22" Height="20" Foreground="#B5B7BB"
+                FontSize="13" Cursor="Hand"
                 ToolTip="Созламалар"/>
         <Button x:Name="BtnClose" DockPanel.Dock="Right" Content="&#x2715;"
-                Width="20" Height="20" Background="Transparent" Foreground="#B5B7BB"
-                BorderThickness="0" FontSize="11" Cursor="Hand"
+                Style="{StaticResource IconButton}"
+                Width="20" Height="20" Foreground="#B5B7BB"
+                FontSize="11" Cursor="Hand"
                 ToolTip="Ёпиш"/>
       </DockPanel>
 
@@ -203,6 +229,32 @@ function Show-SettingsDialog {
         Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         FontFamily="file:///C:/Users/abu_y/PrayerWidget/fonts/#Nunito">
+  <Window.Resources>
+    <Style x:Key="FilledButton" TargetType="Button">
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Focusable" Value="False"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Grid>
+              <Border Background="{TemplateBinding Background}" CornerRadius="6" SnapsToDevicePixels="True"/>
+              <Border x:Name="Overlay" Background="Transparent" CornerRadius="6" SnapsToDevicePixels="True"/>
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Overlay" Property="Background" Value="#22FFFFFF"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Overlay" Property="Background" Value="#33000000"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
   <Border CornerRadius="16" Background="#FA1C1E22" BorderBrush="#44000000" BorderThickness="1" Padding="20">
     <Border.Effect>
       <DropShadowEffect Color="Black" BlurRadius="22" ShadowDepth="4" Opacity="0.55"/>
@@ -225,11 +277,13 @@ function Show-SettingsDialog {
 
       <DockPanel LastChildFill="False" Margin="0,18,0,0">
         <Button x:Name="BtnSave" DockPanel.Dock="Right" Content="Сақлаш"
+                Style="{StaticResource FilledButton}"
                 Padding="14,7,14,7" Background="#1F8A5C" Foreground="White"
-                BorderThickness="0" FontWeight="Bold" FontSize="13" Cursor="Hand"/>
+                FontWeight="Bold" FontSize="13" Cursor="Hand"/>
         <Button x:Name="BtnCancel" DockPanel.Dock="Right" Content="Бекор"
+                Style="{StaticResource FilledButton}"
                 Padding="14,7,14,7" Margin="0,0,8,0" Background="#3D4148" Foreground="White"
-                BorderThickness="0" FontSize="13" Cursor="Hand"/>
+                FontSize="13" Cursor="Hand"/>
       </DockPanel>
     </StackPanel>
   </Border>
