@@ -58,10 +58,10 @@ try {
     if (Test-Path $cfgPath) { $configBackup = Get-Content $cfgPath -Raw -Encoding UTF8 }
 
     if (Test-Path $InstallDir) {
-        # Remove old files except config.json (preserve user position/city)
-        Get-ChildItem $InstallDir -Recurse -Force -ErrorAction SilentlyContinue |
-            Where-Object { $_.Name -ne 'config.json' } |
-            Sort-Object -Property FullName -Descending |
+        # Remove old files but preserve: config.json (user state), .git (dev clones)
+        $preserved = @('config.json', '.git')
+        Get-ChildItem $InstallDir -Force -ErrorAction SilentlyContinue |
+            Where-Object { $preserved -notcontains $_.Name } |
             Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
     }
     New-Item -ItemType Directory -Force -Path $InstallDir | Out-Null
