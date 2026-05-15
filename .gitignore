@@ -1,0 +1,11 @@
+# Runtime state — never commit
+config.json
+cache.json
+
+# OS / IDE noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vs/
+*.user
+*.suo
